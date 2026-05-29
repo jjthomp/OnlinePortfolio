@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pediatric Pain Relief Device — Jordan Thompson</title>
+<link rel="stylesheet" href="project-base.css">
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<nav>
+  <a href="index.html" class="nav-logo">JT — Portfolio</a>
+  <a href="index.html#projects" class="nav-back">All Projects</a>
+</nav>
+
+<!-- HERO -->
+<div class="project-hero" style="--hero-accent: #a78bfa;">
+  <div class="project-hero-bg" style="background: linear-gradient(160deg, #0d0618 0%, #1e0a3c 40%, #3d1080 100%);"></div>
+  <div class="project-hero-grid"></div>
+  <div class="project-hero-glow" style="background: radial-gradient(circle, rgba(167,139,250,0.3) 0%, transparent 70%);"></div>
+  <div class="project-hero-content">
+    <p class="project-hero-tag">Capstone Design Project · UBC Biomedical Engineering</p>
+    <h1 class="project-hero-title">Pediatric Injection<br><em>Pain Relief Device</em></h1>
+    <div class="project-hero-meta">
+      <div class="meta-item">
+        <span class="meta-label">Context</span>
+        <span class="meta-value">Final Year Capstone</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Hardware</span>
+        <span class="meta-value">PCB, Embedded, CAD</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Domain</span>
+        <span class="meta-value">Pediatric Pain Management</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Status</span>
+        <span class="meta-value">Prototype & Iterating</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BODY -->
+<div class="project-body">
+  <div class="content-grid">
+
+    <!-- MAIN -->
+    <div class="main-content">
+
+      <div class="content-section fade-in">
+        <div class="section-label">Overview</div>
+        <h2 class="section-heading">A low-cost, open-source device for children undergoing repeated injections</h2>
+        <div class="prose">
+          <p>This project was my final design project to complete my engineering degree. Our objective was to create a low-cost, open-source device to relieve procedural pain during pediatric injections. Children with Juvenile Idiopathic Arthritis (JIA) often require approximately <strong>42 injections per year</strong>, a process that frequently causes significant emotional distress. While commercial pain-modulating devices exist, they are often too expensive for widespread use in rural or low-resource clinics.</p>
+          <p>My team and I aimed to solve this by designing a 3D-printable device that uses both vibration and cooling therapy to reduce pain perception. The design needed to be child-friendly, easy to assemble without engineering support, and backed by clinical evidence on what actually works for pain modulation.</p>
+        </div>
+      </div>
+
+      <div class="content-section fade-in">
+        <div class="section-label">Clinical Foundation</div>
+        <h2 class="section-heading">Design specifications derived from stakeholders and literature</h2>
+        <div class="prose">
+          <p>The device is based on the gate control theory of pain, which describes how non-painful stimuli like vibration and cooling can reduce the perception of pain by activating competing sensory pathways. I conducted stakeholder interviews with clinicians and reviewed the literature to determine what specifications would give the best pain modulation results. This process set our key targets: a <strong>vibration frequency range of 100–200 Hz</strong> and a <strong>cooling surface temperature between 4–10°C</strong> sustained over a 10-minute procedure window.</p>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- Image placeholder -->
+      <div class="fade-in">
+        <div class="section-label">Figure 1</div>
+        <div class="project-image-block">
+          <img src="Ped_Inj_Fig1.png" alt="Final CAD Design">
+        </div>
+      </div>
+
+      <div class="content-section fade-in">
+        <div class="section-label">Hardware Design</div>
+        <h2 class="section-heading">Custom PCB motor driver and embedded control</h2>
+        <div class="prose">
+          <p>The vibration component consists of an electrical module featuring a weighted motor, a <strong>custom PCB motor driver</strong>, and a microcontroller that allows for changes in vibration speed. I designed the PCB and circuit schematic to drive the motor at the target frequencies, with the microcontroller outputting a PWM signal to control motor speed.</p>
+          <p>The circuit uses a transistor to switch the motor, with a flyback diode to protect against the back-EMF the motor generates when switching. I also included bypass capacitors to reduce electrical noise on the power lines. The board was designed to be compact and battery-powered so it can be used cordlessly during procedures.</p>
+        </div>
+        <div class="challenge-block">
+          <p>One challenge with ERM motors is that the output frequency is not perfectly linear with the PWM duty cycle — it varies depending on the motor load and battery voltage. To ensure the device reliably hits the target frequency range, I characterized the motor response at different drive levels and used verification testing with an accelerometer to confirm the final output. I am currently improving the motor driver circuitry to allow operation at several discrete frequencies and amplitudes rather than a single variable speed.</p>
+        </div>
+      </div>
+
+      <!-- Image placeholder -->
+      <div class="fade-in">
+        <div class="section-label">Figure 2</div>
+        <div class="project-image-block" style="aspect-ratio: 4/3;">
+          <!-- Replace with: <img src="pain-device-pcb.png" alt="PCB Board Layout"> -->
+          <div class="img-placeholder">
+            <div class="img-placeholder-icon">🔌</div>
+            <p class="img-placeholder-text">Add figure: PCB board layout and circuit schematic</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-section fade-in">
+        <div class="section-label">Mechanical Design</div>
+        <h2 class="section-heading">Modular 3D-printed PLA housing</h2>
+        <div class="prose">
+          <p>Our design features a child-friendly, 3D-printable PLA housing with <strong>swappable modules</strong> to give the device the broadest possible utility. The vibration module and the cooling module can each be attached or removed independently, so clinicians can use the device with one or both modalities depending on patient preference and the clinical situation.</p>
+          <p>Cooling is achieved through integrated holders for swappable gel ice packs. The geometry of the holder was iterated through several prints to get the right balance of thermal contact, structural rigidity, and comfort for a pediatric patient. All parts are printable on a standard FDM printer using PLA, and we produced clear assembly instructions and clinical operation protocols as part of the deliverable so that the device can be adopted by any clinic without needing engineering support.</p>
+          <p>If you want to learn how to make your own pediatric pain device, check out our open-source documentation!</p>
+        </div>
+      </div>
+
+      <div class="content-section fade-in">
+        <div class="section-label">Verification & Validation</div>
+        <h2 class="section-heading">Testing against clinical design specifications</h2>
+        <div class="prose">
+          <p>I conducted verification testing to confirm the device met the critical pain-modulation requirements. Testing results confirmed the device performs within spec on both modalities:</p>
+        </div>
+        <div class="result-grid">
+          <div class="result-item">
+            <div class="result-value">162 Hz</div>
+            <div class="result-label">Peak vibration frequency (target: 20–200 Hz)</div>
+          </div>
+          <div class="result-item">
+            <div class="result-value">4.7–7.4°C</div>
+            <div class="result-label">Stable cooling surface over 10 min</div>
+          </div>
+          <div class="result-item">
+            <div class="result-value">10 min</div>
+            <div class="result-label">Sustained cooling duration validated</div>
+          </div>
+          <div class="result-item">
+            <div class="result-value">Open</div>
+            <div class="result-label">Fully open-source documentation</div>
+          </div>
+        </div>
+        <div class="prose" style="margin-top:1.5rem;">
+          <p>Vibration frequency was measured using an accelerometer mounted to the device surface, and cooling performance was logged using a thermocouple over a 10-minute test window. Both results fell within the target ranges derived from the literature and stakeholder interviews, confirming the design meets its clinical requirements.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+      <div class="sidebar-card fade-in">
+        <div class="sidebar-card-title">Technologies Used</div>
+        <div class="tag-list">
+          <span class="tag">PCB Design</span>
+          <span class="tag">Embedded C</span>
+          <span class="tag">CAD</span>
+          <span class="tag">3D Printing</span>
+          <span class="tag">ERM Motors</span>
+          <span class="tag">PWM Control</span>
+          <span class="tag">Thermal Testing</span>
+        </div>
+      </div>
+
+      <div class="sidebar-card fade-in">
+        <div class="sidebar-card-title">Key Skills Demonstrated</div>
+        <ul class="skill-list-sidebar">
+          <li>Custom PCB Design & Layout</li>
+          <li>Embedded Firmware (C)</li>
+          <li>Motor Driver Circuit Design</li>
+          <li>Mechanical CAD & Modularity</li>
+          <li>FDM 3D Printing</li>
+          <li>Verification & Validation</li>
+          <li>Stakeholder-driven Design</li>
+          <li>Open-source Documentation</li>
+        </ul>
+      </div>
+
+      <div class="sidebar-card fade-in">
+        <div class="sidebar-card-title">Clinical Impact</div>
+        <ul class="skill-list-sidebar">
+          <li>Addresses pain in JIA patients (~42 injections/yr)</li>
+          <li>Open-source & low-cost for rural clinics</li>
+          <li>Validated against clinical literature targets</li>
+          <li>Deployable without engineering support</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- PROJECT NAV -->
+<div class="project-nav-footer">
+  <a href="project-emg.html" class="proj-nav-link prev">
+    <span class="proj-nav-label">Previous Project</span>
+    <span class="proj-nav-title">← EMG Signal Analysis</span>
+  </a>
+  <a href="project-fall-detection.html" class="proj-nav-link next">
+    <span class="proj-nav-label">Next Project</span>
+    <span class="proj-nav-title">Fall Detection Algorithm →</span>
+  </a>
+</div>
+
+<footer>
+  <p>© 2026 Jordan Thompson</p>
+  <p>Biomedical Engineering · UBC</p>
+</footer>
+
+<script src="project-base.js"></script>
+</body>
+</html>

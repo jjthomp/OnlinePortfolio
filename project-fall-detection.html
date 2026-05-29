@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fall Detection Algorithm — Jordan Thompson</title>
+<link rel="stylesheet" href="project-base.css">
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<nav>
+  <a href="index.html" class="nav-logo">JT — Portfolio</a>
+  <a href="index.html#projects" class="nav-back">All Projects</a>
+</nav>
+
+<!-- HERO -->
+<div class="project-hero">
+  <div class="project-hero-bg" style="background: linear-gradient(160deg, #0d0618 0%, #2d0a5f 40%, #5b21b6 100%);"></div>
+  <div class="project-hero-grid"></div>
+  <div class="project-hero-glow" style="background: radial-gradient(circle, rgba(109,40,217,0.35) 0%, transparent 70%);"></div>
+  <div class="project-hero-content">
+    <p class="project-hero-tag">Machine Learning Project · Biomedical Engineering</p>
+    <h1 class="project-hero-title">Fall Detection<br><em>Algorithm</em> for Older Adults</h1>
+    <div class="project-hero-meta">
+      <div class="meta-item">
+        <span class="meta-label">Context</span>
+        <span class="meta-value">Academic Project</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Tools</span>
+        <span class="meta-value">Python, scikit-learn</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Domain</span>
+        <span class="meta-value">Geriatric Safety / Wearables</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Classifier</span>
+        <span class="meta-value">Random Forest</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BODY -->
+<div class="project-body">
+  <div class="content-grid">
+
+    <!-- MAIN -->
+    <div class="main-content">
+
+      <div class="content-section fade-in">
+        <div class="section-label">Overview</div>
+        <h2 class="section-heading">A sensor-agnostic ML pipeline for real-time fall detection in long-term care</h2>
+        <div class="prose">
+          <p>Falls are a critical safety concern for older adults, particularly those in long-term care facilities where the risk of serious injury is much higher than in the general population. My objective for this project was to develop a reliable, sensor-independent machine learning model capable of detecting both falls and near-falls using Inertial Measurement Unit (IMU) data.</p>
+          <p>By designing a system that can be integrated into everyday items like smartwatches, jewelry, or life-alert necklaces, I aimed to provide a non-intrusive safety net that ensures caregivers are immediately alerted when a fall occurs, which would improve clinical response times and patient outcomes.</p>
+        </div>
+      </div>
+
+      <div class="content-section fade-in">
+        <div class="section-label">Technical Challenge</div>
+        <h2 class="section-heading">Maximizing sensitivity across multiple sensor types</h2>
+        <div class="prose">
+          <p>The main challenge with fall detection is that falls are rare events, and the data from everyday activities can look similar to a fall — especially near-falls, where a person loses balance but recovers without hitting the ground. The model needs to be sensitive enough to catch every real fall while not triggering on normal movement.</p>
+          <p>A second challenge was making the model work across different sensor placements and hardware. In a real care setting, you cannot guarantee that every resident will wear a sensor in the same location, so the model needed to work reliably whether the IMU is on the thigh, the back, or somewhere else. This required building a pipeline that could handle multiple sensor modalities and still produce a consistent prediction.</p>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- Image placeholder -->
+      <div class="fade-in">
+        <div class="section-label">Figure 1</div>
+        <div class="project-image-block" style="aspect-ratio: 16/7;">
+          <!-- Replace with: <img src="fall-detection-pipeline.png" alt="ML Pipeline Diagram"> -->
+          <div class="img-placeholder">
+            <div class="img-placeholder-icon">🔁</div>
+            <p class="img-placeholder-text">Add figure: Machine Learning Pipeline Diagram (IMU → filters → windows → classifier)</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-section fade-in">
+        <div class="section-label">Signal Processing</div>
+        <h2 class="section-heading">Filtering and windowing the IMU data</h2>
+        <div class="prose">
+          <p>The first step in the pipeline was preprocessing the raw IMU data. I applied a <strong>0.1 Hz high-pass filter</strong> to remove the DC offset caused by gravity, which varies depending on how the device is oriented on the body. I then applied targeted low-pass filters — <strong>150 Hz for linear acceleration</strong> and <strong>250 Hz for gyroscope data</strong> — to reduce noise while preserving the motion frequencies that are relevant to fall detection.</p>
+        </div>
+        <div class="challenge-block">
+          <p>The filtered data was segmented into <strong>10-second rolling windows with a 5-second overlap</strong>. I chose this window size specifically to capture the entirety of a potential fall, which based on the literature lasts approximately 6 seconds from onset to ground contact. The 5-second overlap ensures that a fall occurring near the edge of a window is still fully captured in the adjacent window, which avoids missing events at window boundaries.</p>
+        </div>
+      </div>
+
+      <div class="content-section fade-in">
+        <div class="section-label">Model Development</div>
+        <h2 class="section-heading">Random Forest classifier with GridSearch optimization</h2>
+        <div class="prose">
+          <p>For the classification stage, I evaluated several models and determined that a <strong>Random Forest classifier</strong> provided the highest accuracy. Rather than relying on trial and error for the hyperparameters, I used a <strong>GridSearch approach with 5-fold cross-validation</strong> to systematically determine the optimal settings for the model. This gave me a principled way to compare configurations and avoid overfitting to the training data.</p>
+          <p>To maximize safety, I implemented a decision strategy where the entire system predicts a fall if even a single sensor identifies one. This means I trained separate models for each sensor location — right thigh, back, and left thigh — and fused their outputs so that any one of them triggering a fall prediction counts as a fall. This prioritizes sensitivity and ensures no fall goes undetected, which is the most important outcome for this type of system.</p>
+        </div>
+        <div class="challenge-block">
+          <p>The training data also included Gold Standard Sensor (GSS) and ECG data alongside the IMU signals. Including these additional modalities gave the model more information to work with during training, which helped reduce false positives during high-exertion activities that can produce IMU signatures similar to falls.</p>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="content-section fade-in">
+        <div class="section-label">Results</div>
+        <h2 class="section-heading">Performance outcomes</h2>
+        <div class="result-grid">
+          <div class="result-item">
+            <div class="result-value">RF</div>
+            <div class="result-label">Best-performing classifier (vs SVM, KNN, LR, DT)</div>
+          </div>
+          <div class="result-item">
+            <div class="result-value">5-fold</div>
+            <div class="result-label">Cross-validation for robust generalisation</div>
+          </div>
+          <div class="result-item">
+            <div class="result-value">3-sensor</div>
+            <div class="result-label">Fusion across body locations</div>
+          </div>
+          <div class="result-item">
+            <div class="result-value">Max</div>
+            <div class="result-label">Sensitivity prioritised — zero missed falls target</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+      <div class="sidebar-card fade-in">
+        <div class="sidebar-card-title">Technologies Used</div>
+        <div class="tag-list">
+          <span class="tag">Python</span>
+          <span class="tag">scikit-learn</span>
+          <span class="tag">Random Forest</span>
+          <span class="tag">GridSearchCV</span>
+          <span class="tag">IMU / Accelerometer</span>
+          <span class="tag">Signal Filtering</span>
+          <span class="tag">MATLAB</span>
+        </div>
+      </div>
+
+      <div class="sidebar-card fade-in">
+        <div class="sidebar-card-title">Key Skills Demonstrated</div>
+        <ul class="skill-list-sidebar">
+          <li>Machine Learning Pipeline Design</li>
+          <li>Digital Signal Processing</li>
+          <li>Feature Engineering (IMU)</li>
+          <li>Hyperparameter Optimization</li>
+          <li>K-fold Cross Validation</li>
+          <li>Multi-sensor Data Fusion</li>
+          <li>Class Imbalance Handling</li>
+          <li>Biomedical Data Analysis</li>
+        </ul>
+      </div>
+
+      <div class="sidebar-card fade-in">
+        <div class="sidebar-card-title">Design Priorities</div>
+        <ul class="skill-list-sidebar">
+          <li>Sensor-agnostic architecture</li>
+          <li>Sensitivity-first decision strategy</li>
+          <li>Real-time computation budget</li>
+          <li>Near-fall detection (not just falls)</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- PROJECT NAV -->
+<div class="project-nav-footer">
+  <a href="project-pain-device.html" class="proj-nav-link prev">
+    <span class="proj-nav-label">Previous Project</span>
+    <span class="proj-nav-title">← Pediatric Pain Relief Device</span>
+  </a>
+  <a href="project-bladder.html" class="proj-nav-link next">
+    <span class="proj-nav-label">Next Project</span>
+    <span class="proj-nav-title">Bladder Management Device →</span>
+  </a>
+</div>
+
+<footer>
+  <p>© 2026 Jordan Thompson</p>
+  <p>Biomedical Engineering · UBC</p>
+</footer>
+
+<script src="project-base.js"></script>
+</body>
+</html>

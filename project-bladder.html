@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bladder Management Device — Jordan Thompson</title>
+<link rel="stylesheet" href="project-base.css">
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<nav>
+  <a href="index.html" class="nav-logo">JT — Portfolio</a>
+  <a href="index.html#projects" class="nav-back">All Projects</a>
+</nav>
+
+<!-- HERO -->
+<div class="project-hero">
+  <div class="project-hero-bg" style="background: linear-gradient(160deg, #0d0618 0%, #1e0a3c 30%, #4c1d95 70%, #6d28d9 100%);"></div>
+  <div class="project-hero-grid"></div>
+  <div class="project-hero-glow" style="background: radial-gradient(circle, rgba(216,180,254,0.2) 0%, transparent 70%);"></div>
+  <div class="project-hero-content">
+    <p class="project-hero-tag">Co-op Research · BioAugmentative Interfaces Laboratory, UBC</p>
+    <h1 class="project-hero-title">SMA-Actuated<br><em>Bladder Management</em> Device</h1>
+    <div class="project-hero-meta">
+      <div class="meta-item">
+        <span class="meta-label">Context</span>
+        <span class="meta-value">Co-op + Part-time Research</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Hardware</span>
+        <span class="meta-value">SMA, BLE, PCB, C++</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Domain</span>
+        <span class="meta-value">Implantable Medical Device</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Scope</span>
+        <span class="meta-value">Full System Development</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BODY -->
+<div class="project-body">
+  <div class="content-grid">
+
+    <!-- MAIN -->
+    <div class="main-content">
+
+      <div class="content-section fade-in">
+        <div class="section-label">Overview</div>
+        <h2 class="section-heading">Developing a bladder management device at the BioAugmentative Interfaces Lab</h2>
+        <div class="prose">
+          <p>During my co-op and part-time work at the BioAugmentative Interfaces Laboratory, I focused on developing a bladder management device. The goal was to create a device that could void rodent bladders using <strong>shape memory alloys (SMAs)</strong> — materials that contract when heated above a transition temperature, producing force without the need for conventional motors or hydraulics.</p>
+          <p>When I started at the lab, the device was not efficient at voiding rat bladders, the fabrication process was time-consuming, and there was no control system in place. My work covered three main areas: developing a control system, improving the actuator fabrication, and building a wireless communication protocol — all tested iteratively through pre-clinical studies.</p>
+        </div>
+      </div>
+
+      <div class="content-section fade-in">
+        <div class="section-label">Technical Challenge 1</div>
+        <h2 class="section-heading">Developing the control system</h2>
+        <div class="prose">
+          <p>My first task was developing a control system in <strong>C++</strong> to manage the actuation of the device. I tested different control algorithms to determine which methods were the most efficient — meaning they minimized power usage and external temperature while maximizing voiding performance.</p>
+          <p>I measured external and internal temperatures using a thermocouple and an infrared camera. The resulting data showed me which parts of the device were generating too much external heat, which informed where additional insulation was needed in subsequent design iterations.</p>
+        </div>
+        <div class="challenge-block">
+          <p>SMAs are difficult to control precisely because their actuation response is non-linear — the force output depends on temperature, which changes slowly and has significant hysteresis between heating and cooling. Over-heating an SMA permanently degrades its shape memory properties, so the control system had to stay within a specific operating window. After testing several approaches, a timed pulse protocol with rest intervals gave the best balance of actuation performance, device longevity, and safe surface temperatures.</p>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- Image placeholder -->
+      <div class="fade-in">
+        <div class="section-label">Figure 1</div>
+        <div class="project-image-block">
+          <img src="moldPhoto.png" alt="Actuator Fabrication Steps">
+        </div>
+      </div>
+
+      <div class="content-section fade-in">
+        <div class="section-label">Technical Challenge 2</div>
+        <h2 class="section-heading">Improving the actuator fabrication</h2>
+        <div class="prose">
+          <p>The next area I focused on was improving the fabrication of the actuator. I created several CAD prototypes of different molds used to produce silicone elastomer structures with the SMA actuator embedded inside. Silicone elastomer was chosen as the material because it insulates the heat generated by the actuator and is soft and flexible, which reduces the inflammation response when the device is implanted.</p>
+          <p>Once the molds were 3D printed, I fabricated the actuator components and tested each design on a test fixture I built. The fixture consisted of an artificial rat bladder, a flow meter, tubing, and a stand. I programmed the flow meter in C++ using an Arduino so I could measure flow velocity during actuation, which also allowed me to calculate the force each actuator applied to the artificial bladder.</p>
+        </div>
+        <div class="challenge-block">
+          <p>Getting consistent results across fabrication runs was one of the harder problems. Small variations in where the SMA wires were positioned inside the mold affected the force distribution and voiding efficiency significantly. I addressed this by designing wire-registration features directly into the mold so that the wire position was fixed before the elastomer was poured. I also added a vacuum degassing step to eliminate air bubbles in the elastomer before casting.</p>
+        </div>
+      </div>
+
+      <!-- Image placeholder -->
+      <div class="fade-in">
+        <div class="section-label">Figure 2</div>
+        <div class="project-image-block">
+          <img src="testFixture.png" style="width: 50%; max-width: 400px; height: auto;" alt="Test Fixture Setup">
+        </div>
+      </div>
+
+      <div class="content-section fade-in">
+        <div class="section-label">Technical Challenge 3</div>
+        <h2 class="section-heading">BLE communication protocol on a custom PCB</h2>
+        <div class="prose">
+          <p>The next portion of my work was developing a Bluetooth Low Energy (BLE) communication protocol between the device and a user's phone. To do this, I created a test PCB using a <strong>u-blox BMD-340 chip</strong> (nRF52840-based) and used <strong>Zephyr OS</strong> to develop the protocol. The test PCB was programmed using an nRF52840 development board as a programmer via Serial Wire Debug (SWD).</p>
+          <p>Because I was working on a custom PCB rather than the development board, I also created a <strong>devicetree file</strong> for the new hardware to ensure a smooth transition from the commercial board to the custom one. This required carefully mapping all peripheral connections and checking for pinout conflicts — small errors here caused hard-to-diagnose failures that required oscilloscope verification to track down.</p>
+        </div>
+        <div class="challenge-block">
+          <p>In the communication protocol I customized a GATT service profile, organized the GAP setup, and ensured that power use was as limited as possible when the device was on standby. The goal was to minimize quiescent current draw to extend battery life to a level compatible with a clinical implant cycle. The protocol was validated against a companion smartphone application to confirm reliable connection, low command latency, and correct handling of disconnection events.</p>
+        </div>
+      </div>
+
+      <div class="content-section fade-in">
+        <div class="section-label">Preclinical Validation</div>
+        <h2 class="section-heading">Rodent surgeries and cadaver model testing</h2>
+        <div class="prose">
+          <p>To test the device, I conducted pre-clinical validation studies involving rodent surgeries and cadaver models. These tests let me see how the device functions with an intact bladder system and optimize the design based on what I observed. The studies were completed iteratively throughout development so that design changes could be evaluated as they were made rather than all at once at the end.</p>
+          <p>Rodent surgeries were conducted under institutional animal care protocols. Cadaver testing gave me access to human-scale anatomy and allowed me to evaluate device fit and the implantation approach in conditions closer to clinical use. Together, these studies provided the feedback needed to refine the actuator geometry and insulation design through multiple rounds of iteration.</p>
+        </div>
+        <div class="result-grid">
+          <div class="result-item">
+            <div class="result-value">C++</div>
+            <div class="result-label">Firmware language (Zephyr RTOS)</div>
+          </div>
+          <div class="result-item">
+            <div class="result-value">BLE</div>
+            <div class="result-label">Wireless control protocol</div>
+          </div>
+          <div class="result-item">
+            <div class="result-value">SMA</div>
+            <div class="result-label">Soft actuator material</div>
+          </div>
+          <div class="result-item">
+            <div class="result-value">In vivo</div>
+            <div class="result-label">Rodent & cadaver validation</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+      <div class="sidebar-card fade-in">
+        <div class="sidebar-card-title">Technologies Used</div>
+        <div class="tag-list">
+          <span class="tag">C++</span>
+          <span class="tag">Zephyr RTOS</span>
+          <span class="tag">nRF52840 / BLE</span>
+          <span class="tag">Custom PCB</span>
+          <span class="tag">SMA Actuators</span>
+          <span class="tag">Silicone Casting</span>
+          <span class="tag">CAD / 3D Printing</span>
+          <span class="tag">SWD Debug</span>
+        </div>
+      </div>
+
+      <div class="sidebar-card fade-in">
+        <div class="sidebar-card-title">Key Skills Demonstrated</div>
+        <ul class="skill-list-sidebar">
+          <li>Embedded Firmware (C++ / RTOS)</li>
+          <li>BLE GATT Protocol Design</li>
+          <li>Custom PCB Bring-up</li>
+          <li>Devicetree Configuration</li>
+          <li>Soft Actuator Fabrication</li>
+          <li>Thermal System Analysis</li>
+          <li>Test Fixture Development</li>
+          <li>Preclinical Research</li>
+          <li>Animal Care Protocols</li>
+        </ul>
+      </div>
+
+      <div class="sidebar-card fade-in">
+        <div class="sidebar-card-title">Research Impact</div>
+        <ul class="skill-list-sidebar">
+          <li>Full-system co-op contribution</li>
+          <li>Validated in rodent & cadaver models</li>
+          <li>BLE wireless control achieved</li>
+          <li>Improved fabrication repeatability</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- PROJECT NAV -->
+<div class="project-nav-footer">
+  <a href="project-fall-detection.html" class="proj-nav-link prev">
+    <span class="proj-nav-label">Previous Project</span>
+    <span class="proj-nav-title">← Fall Detection Algorithm</span>
+  </a>
+  <a href="project-emg.html" class="proj-nav-link next">
+    <span class="proj-nav-label">Back to First</span>
+    <span class="proj-nav-title">EMG Signal Analysis →</span>
+  </a>
+</div>
+
+<footer>
+  <p>© 2026 Jordan Thompson</p>
+  <p>Biomedical Engineering · UBC</p>
+</footer>
+
+<script src="project-base.js"></script>
+</body>
+</html>
