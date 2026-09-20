@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Jordan Thompson</title>
+<link rel="stylesheet" href="base.css">
+<style>
+  .about-wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 1.5rem 5vw 4rem;
+  }
+  .about-wrap h1 {
+    font-family: 'IBM Plex Serif', serif;
+    font-weight: 400;
+    font-size: clamp(1.9rem, 4vw, 2.6rem);
+    margin-bottom: 1.6rem;
+  }
+  .about-wrap p {
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--ink-soft);
+    margin-bottom: 1.3rem;
+  }
+  .about-wrap strong { color: var(--ink); font-weight: 500; }
+
+  .block {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2.4rem 5vw;
+    border-top: 1px solid var(--line);
+  }
+  .block h2 {
+    font-family: 'IBM Plex Serif', serif;
+    font-weight: 400;
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .role {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 1.5rem;
+    padding: 1.1rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .role:last-child { border-bottom: none; }
+  .role-meta { display: flex; flex-direction: column; gap: 0.2rem; }
+  .role-org { font-weight: 500; }
+  .role-when { font-size: 0.85rem; color: var(--ink-soft); }
+  .role-title { font-weight: 500; margin-bottom: 0.5rem; }
+  .role-desc { font-size: 0.92rem; color: var(--ink-soft); line-height: 1.7; }
+  .role-desc ul { padding-left: 1.1rem; display: flex; flex-direction: column; gap: 0.4rem; }
+
+  .skills-cols {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.8rem;
+  }
+  .skills-cols h3 { font-size: 0.85rem; color: var(--pcb); margin-bottom: 0.7rem; }
+  .skills-cols ul { list-style: none; display: flex; flex-direction: column; gap: 0.45rem; }
+  .skills-cols li { font-size: 0.88rem; color: var(--ink-soft); }
+
+  .contact-list { display: flex; flex-direction: column; gap: 0.9rem; }
+  .contact-row {
+    display: flex;
+    gap: 1.2rem;
+    text-decoration: none;
+    padding: 0.9rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .contact-row:last-child { border-bottom: none; }
+  .contact-label { width: 90px; color: var(--ink-soft); font-size: 0.85rem; }
+  .contact-value { color: var(--ink); }
+  .contact-row:hover .contact-value { color: var(--pcb); }
+
+  .pub-item { max-width: 640px; }
+  .pub-title {
+    font-family: 'IBM Plex Serif', serif;
+    font-size: 1.15rem;
+    margin-bottom: 0.4rem;
+  }
+  .pub-meta { font-size: 0.85rem; color: var(--ink-soft); margin-bottom: 0.9rem; }
+  .pub-desc { font-size: 0.92rem; color: var(--ink-soft); line-height: 1.7; margin-bottom: 0.9rem; }
+  .pub-link { font-size: 0.9rem; color: var(--pcb); text-decoration: none; border-bottom: 1px solid var(--pcb); padding-bottom: 1px; }
+  .pub-link:hover { opacity: 0.75; }
+
+
+  @media(max-width:700px){
+    .role { grid-template-columns: 1fr; gap: 0.3rem; }
+    .skills-cols { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Jordan Thompson</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Work</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+</nav>
+
+<div class="about-wrap">
+  <h1>Designing the mechanical systems inside medical devices.</h1>
+  <p>I'm a Biomedical Engineering graduate from UBC (2026), specialized in mechatronics. Mechanical design is my core strength — CAD, GD&amp;T, and rapid prototyping — and I use it to build the actuators, housings, molds, and test fixtures that a device is built around, then carry that hardware through electrical integration and clinical validation myself.</p>
+  <p>I'm currently a <strong>Junior Mechatronics Engineer at VRNDA Labs</strong>, where I own the mechanical design of a modular syringe pump end to end. I am also working on lab automation systems by building the fluid handling tools and tool hot swapping mechanisms. Before that, I spent close to two years at UBC's BioAugmentative Interfaces Laboratory designing and fabricating an implantable, SMA-actuated bladder management device, and a summer as a Biomedical Test Engineer at Kardium validating catheter-based ablation devices against ISO 10993.</p>
+</div>
+
+<div class="block">
+  <h2>Experience</h2>
+
+  <div class="role">
+    <div class="role-meta">
+      <span class="role-org">VRNDA Labs</span>
+      <span class="role-when">June 2026 – Present · Richmond, BC</span>
+    </div>
+    <div>
+      <div class="role-title">Junior Mechatronics Engineer</div>
+      <div class="role-desc">
+        <ul>
+          <li>Took the mechanical design of a modular syringe pump from requirements to a CAD design and bill of materials in two weeks.</li>
+          <li>Drew up an end-effector hot-swapping mechanism in Fusion 360 combining custom and off-the-shelf components, fully specified with assembly, dimensioning, and tolerancing (GD&amp;T).</li>
+          <li>Built the fluid-delivery hardware around NEMA 17 stepper motors, CL42T-V41 drivers, and 3D-printed parts, achieving 0.1–1200 mL/hr flow rates via microstepping at 51,200 steps/rev.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="role">
+    <div class="role-meta">
+      <span class="role-org">Kardium Inc.</span>
+      <span class="role-when">May 2025 – Aug 2025 · Burnaby, BC</span>
+    </div>
+    <div>
+      <div class="role-title">Biomedical Test Engineer Co-op</div>
+      <div class="role-desc">
+        <ul>
+          <li>Designed and executed verification test protocols (TOC and FT-IR) validating cleaning and sterilization efficacy of intravascular catheter-based ablation devices, generating data that directly supported an FDA regulatory submission.</li>
+          <li>Ensured ISO 10993 biocompatibility compliance within an ISO 13485 quality system; ran non-parametric statistical analysis in Minitab and took part in change controls, ECOs, and deviations.</li>
+          <li>Sourced and qualified components and materials with outside vendors for test fixtures and protocols.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="role">
+    <div class="role-meta">
+      <span class="role-org">BioAugmentative Interfaces Lab</span>
+      <span class="role-when">Nov 2023 – April 2025 · Vancouver, BC</span>
+    </div>
+    <div>
+      <div class="role-title">Mechatronics Co-op Student / Mechatronics Research Assistant</div>
+      <div class="role-desc">
+        <ul>
+          <li>Designed and built a phantom bladder rig — 3D-printed stand, flow meter, and force sensing — to mechanically validate flow rate and actuation performance ahead of in-vivo animal trials.</li>
+          <li>Led the mechanical design and packaging of a proof-of-concept device housing, supporting migration to a miniaturized form factor for rodent implantation.</li>
+          <li>Designed and iterated modular 3D-printed molds in OnShape to streamline actuator insulation, minimize air bubbles, and improve manufacturing repeatability.</li>
+          <li>Optimized a shape-memory alloy actuator's duty cycle, achieving 78% liquid-voiding efficiency while keeping temperature rise under 2°C.</li>
+          <li>Developed a custom PCB and BLE firmware (Zephyr RTOS, nRF52840) to remotely control actuators and stream sensor data.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="block">
+  <h2>Skills</h2>
+  <div class="skills-cols">
+    <div>
+      <h3>Mechanical design &amp; fabrication</h3>
+      <ul>
+        <li>SolidWorks, OnShape, Fusion 360</li>
+        <li>GD&amp;T, drawings &amp; tolerancing</li>
+        <li>3D printing (FDM &amp; MSLA), laser cutting, hand tools</li>
+        <li>Mold design &amp; silicone casting</li>
+        <li>Test fixture &amp; validation rig development</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Hardware &amp; firmware</h3>
+      <ul>
+        <li>PCB design (Altium, Eagle)</li>
+        <li>Embedded C / C++</li>
+        <li>Zephyr RTOS, BLE / nRF52840</li>
+        <li>Motor driver circuit design</li>
+        <li>Oscilloscope, SWD debugging</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Software &amp; analysis</h3>
+      <ul>
+        <li>Python, MATLAB</li>
+        <li>Digital signal processing</li>
+        <li>Machine learning (scikit-learn)</li>
+        <li>Clinical &amp; preclinical validation</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="block">
+  <h2>Publications</h2>
+  <div class="pub-item">
+    <div class="pub-title">A Soft, Conformal, and Implantable Sensor for On-Demand Bladder Volume Monitoring</div>
+    <div class="pub-meta">ACS Applied Bio Materials · 2026 · BioAugmentative Interfaces Laboratory, UBC</div>
+    <p class="pub-desc">Co-authored work from my time in the lab, on a soft implantable sensor for tracking bladder volume — part of the same research effort behind the SMA-actuated bladder management device below.</p>
+    <a href="https://pubs.acs.org/aabmcb/article/doi/10.1021/acsabm.6c01267/5427292/A-Soft-Conformal-and-Implantable-Sensor-for-On" class="pub-link" target="_blank">Read the paper →</a>
+  </div>
+</div>
+
+<div class="block">
+  <h2>Contact</h2>
+  <div class="contact-list">
+    <a href="mailto:jjthompson124@gmail.com" class="contact-row">
+      <span class="contact-label">Email</span>
+      <span class="contact-value">jjthompson124@gmail.com</span>
+    </a>
+    <a href="https://www.linkedin.com/in/jordanthompson978/" class="contact-row" target="_blank">
+      <span class="contact-label">LinkedIn</span>
+      <span class="contact-value">linkedin.com/in/jordanthompson978</span>
+    </a>
+    <a href="https://github.com/jjthomp" class="contact-row" target="_blank">
+      <span class="contact-label">GitHub</span>
+      <span class="contact-value">github.com/jjthomp</span>
+    </a>
+    <a href="Jordan_Thompson_Resume_PDF.pdf" class="contact-row" target="_blank">
+      <span class="contact-label">Résumé</span>
+      <span class="contact-value">Download PDF</span>
+    </a>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 Jordan Thompson</p>
+  <p>Biomedical Engineering · UBC</p>
+</footer>
+
+</body>
+</html>

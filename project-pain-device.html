@@ -4,23 +4,21 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pediatric Pain Relief Device — Jordan Thompson</title>
-<link rel="stylesheet" href="project-base.css">
+<link rel="stylesheet" href="base.css">
 </head>
 <body>
 
-<div class="cursor" id="cursor"></div>
-<div class="cursor-ring" id="cursorRing"></div>
 
 <nav>
-  <a href="index.html" class="nav-logo">JT — Portfolio</a>
-  <a href="index.html#projects" class="nav-back">All Projects</a>
+  <a href="index.html" class="nav-logo">Jordan Thompson</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Work</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
 </nav>
 
 <!-- HERO -->
-<div class="project-hero" style="--hero-accent: #a78bfa;">
-  <div class="project-hero-bg" style="background: linear-gradient(160deg, #0d0618 0%, #1e0a3c 40%, #3d1080 100%);"></div>
-  <div class="project-hero-grid"></div>
-  <div class="project-hero-glow" style="background: radial-gradient(circle, rgba(167,139,250,0.3) 0%, transparent 70%);"></div>
+<div class="project-hero">
   <div class="project-hero-content">
     <p class="project-hero-tag">Capstone Design Project · UBC Biomedical Engineering</p>
     <h1 class="project-hero-title">Pediatric Injection<br><em>Pain Relief Device</em></h1>
@@ -31,7 +29,7 @@
       </div>
       <div class="meta-item">
         <span class="meta-label">Hardware</span>
-        <span class="meta-value">PCB, Embedded, CAD</span>
+        <span class="meta-value">CAD, PCB, Embedded</span>
       </div>
       <div class="meta-item">
         <span class="meta-label">Domain</span>
@@ -71,6 +69,17 @@
 
       <div class="divider"></div>
 
+      <div class="content-section fade-in">
+        <div class="section-label">Mechanical Design</div>
+        <h2 class="section-heading">A screwless, modular 3D-printed housing</h2>
+        <div class="prose">
+          <p>The mechanical design was my primary responsibility on this project. Our design features a child-friendly, 3D-printable PLA housing with <strong>swappable modules</strong> to give the device the broadest possible utility. The vibration module and the cooling module can each be attached or removed independently, so clinicians can use the device with one or both modalities depending on patient preference and the clinical situation.</p>
+          <p>I designed the housing to be fully <strong>screwless</strong> in OnShape, using printed snap and press-fit features instead of fasteners so a non-technical caregiver could assemble it in <strong>under 13 minutes</strong> with no tools. Cooling is achieved through integrated holders for swappable gel ice packs — the geometry of the holder went through several print iterations to balance thermal contact, structural rigidity, and comfort for a pediatric patient.</p>
+          <p>All parts are printable on a standard FDM printer using PLA. I also compiled a <strong>Design History File (DHF)</strong> — design requirements, test protocols, and drawings — alongside assembly instructions and clinical operation protocols, so the device can be adopted and reproduced by any clinic without engineering support.</p>
+          <p>If you want to learn how to make your own pediatric pain device, check out our <a href="https://jjthomp.github.io/Dr.-Wobbles/" style="color:var(--pcb);" target="_blank">open-source documentation</a>!</p>
+        </div>
+      </div>
+
       <!-- Image placeholder -->
       <div class="fade-in">
         <div class="section-label">Figure 1</div>
@@ -78,6 +87,8 @@
           <img src="Ped_Inj_Fig1.png" alt="Final CAD Design">
         </div>
       </div>
+
+      <div class="divider"></div>
 
       <div class="content-section fade-in">
         <div class="section-label">Hardware Design</div>
@@ -96,16 +107,6 @@
         <div class="section-label">Figure 2</div>
         <div class="project-image-block">
           <img src="pcbBoard.png" alt="PCB Layout">
-        </div>
-      </div>
-
-      <div class="content-section fade-in">
-        <div class="section-label">Mechanical Design</div>
-        <h2 class="section-heading">Modular 3D-printed PLA housing</h2>
-        <div class="prose">
-          <p>Our design features a child-friendly, 3D-printable PLA housing with <strong>swappable modules</strong> to give the device the broadest possible utility. The vibration module and the cooling module can each be attached or removed independently, so clinicians can use the device with one or both modalities depending on patient preference and the clinical situation.</p>
-          <p>Cooling is achieved through integrated holders for swappable gel ice packs. The geometry of the holder was iterated through several prints to get the right balance of thermal contact, structural rigidity, and comfort for a pediatric patient. All parts are printable on a standard FDM printer using PLA, and we produced clear assembly instructions and clinical operation protocols as part of the deliverable so that the device can be adopted by any clinic without needing engineering support.</p>
-          <p>If you want to learn how to make your own pediatric pain device, check out our open-source documentation!</p>
         </div>
       </div>
 
@@ -145,27 +146,28 @@
       <div class="sidebar-card fade-in">
         <div class="sidebar-card-title">Technologies Used</div>
         <div class="tag-list">
+          <span class="tag">OnShape / CAD</span>
+          <span class="tag">Screwless Assembly</span>
+          <span class="tag">3D Printing</span>
+          <span class="tag">Design History File</span>
           <span class="tag">PCB Design</span>
           <span class="tag">Embedded C</span>
-          <span class="tag">CAD</span>
-          <span class="tag">3D Printing</span>
           <span class="tag">ERM Motors</span>
           <span class="tag">PWM Control</span>
-          <span class="tag">Thermal Testing</span>
         </div>
       </div>
 
       <div class="sidebar-card fade-in">
         <div class="sidebar-card-title">Key Skills Demonstrated</div>
         <ul class="skill-list-sidebar">
-          <li>Custom PCB Design & Layout</li>
-          <li>Embedded Firmware (C)</li>
-          <li>Motor Driver Circuit Design</li>
-          <li>Mechanical CAD & Modularity</li>
+          <li>Mechanical CAD &amp; Modularity</li>
+          <li>Screwless / Tool-free Assembly Design</li>
           <li>FDM 3D Printing</li>
-          <li>Verification & Validation</li>
+          <li>Design History File (DHF)</li>
+          <li>Custom PCB Design &amp; Layout</li>
+          <li>Motor Driver Circuit Design</li>
+          <li>Verification &amp; Validation</li>
           <li>Stakeholder-driven Design</li>
-          <li>Open-source Documentation</li>
         </ul>
       </div>
 
@@ -185,13 +187,13 @@
 
 <!-- PROJECT NAV -->
 <div class="project-nav-footer">
-  <a href="project-emg.html" class="proj-nav-link prev">
-    <span class="proj-nav-label">Previous Project</span>
-    <span class="proj-nav-title">← EMG Signal Analysis</span>
+  <a href="project-bladder.html" class="proj-nav-link prev">
+    <span class="proj-nav-label">← Previous Project</span>
+    <span class="proj-nav-title">SMA-Actuated Bladder Management Device</span>
   </a>
-  <a href="project-fall-detection.html" class="proj-nav-link next">
-    <span class="proj-nav-label">Next Project</span>
-    <span class="proj-nav-title">Fall Detection Algorithm →</span>
+  <a href="project-emg.html" class="proj-nav-link next">
+    <span class="proj-nav-label">Next Project →</span>
+    <span class="proj-nav-title">Spatio-Temporal EMG Signal Analysis</span>
   </a>
 </div>
 
@@ -200,6 +202,5 @@
   <p>Biomedical Engineering · UBC</p>
 </footer>
 
-<script src="project-base.js"></script>
 </body>
 </html>
