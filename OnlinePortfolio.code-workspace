@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"name": "Love Letter",
+			"path": "../Documents/PlatformIO/Projects/Love Letter"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "OnlinePortfolio"
+	}
+}
