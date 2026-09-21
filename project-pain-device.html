@@ -12,7 +12,7 @@
 <nav>
   <a href="index.html" class="nav-logo">Jordan Thompson</a>
   <ul class="nav-links">
-    <li><a href="index.html">Work</a></li>
+    <li><a href="index.html">Projects</a></li>
     <li><a href="about.html">About</a></li>
   </ul>
 </nav>
@@ -74,8 +74,8 @@
         <h2 class="section-heading">A screwless, modular 3D-printed housing</h2>
         <div class="prose">
           <p>The mechanical design was my primary responsibility on this project. Our design features a child-friendly, 3D-printable PLA housing with <strong>swappable modules</strong> to give the device the broadest possible utility. The vibration module and the cooling module can each be attached or removed independently, so clinicians can use the device with one or both modalities depending on patient preference and the clinical situation.</p>
-          <p>I designed the housing to be fully <strong>screwless</strong> in OnShape, using printed snap and press-fit features instead of fasteners so a non-technical caregiver could assemble it in <strong>under 13 minutes</strong> with no tools. Cooling is achieved through integrated holders for swappable gel ice packs — the geometry of the holder went through several print iterations to balance thermal contact, structural rigidity, and comfort for a pediatric patient.</p>
-          <p>All parts are printable on a standard FDM printer using PLA. I also compiled a <strong>Design History File (DHF)</strong> — design requirements, test protocols, and drawings — alongside assembly instructions and clinical operation protocols, so the device can be adopted and reproduced by any clinic without engineering support.</p>
+          <p>I designed the housing to be fully <strong>screwless</strong> in OnShape, using printed snap and press-fit features instead of fasteners so a non-technical caregiver could assemble it in <strong>under 13 minutes</strong> with no tools. Cooling is achieved through elastic holders for swappable gel ice packs.</p>
+          <p>All parts are printable on a standard FDM printer using PLA. I also compiled a <strong>Design History File (DHF)</strong> with design requirements, test protocols, drawings, assembly instructions and clinical operation protocols, so the device can be adopted and reproduced by any clinic without engineering support.</p>
           <p>If you want to learn how to make your own pediatric pain device, check out our <a href="https://jjthomp.github.io/Dr.-Wobbles/" style="color:var(--pcb);" target="_blank">open-source documentation</a>!</p>
         </div>
       </div>
@@ -96,9 +96,6 @@
         <div class="prose">
           <p>The vibration component consists of an electrical module featuring a weighted motor, a <strong>custom PCB motor driver</strong>, and a microcontroller that allows for changes in vibration speed. I designed the PCB and circuit schematic to drive the motor at the target frequencies, with the microcontroller outputting a PWM signal to control motor speed.</p>
           <p>The circuit uses a transistor to switch the motor, with a flyback diode to protect against the back-EMF the motor generates when switching. I also included bypass capacitors to reduce electrical noise on the power lines. The board was designed to be compact and battery-powered so it can be used cordlessly during procedures.</p>
-        </div>
-        <div class="challenge-block">
-          <p>One challenge with ERM motors is that the output frequency is not perfectly linear with the PWM duty cycle — it varies depending on the motor load and battery voltage. To ensure the device reliably hits the target frequency range, I characterized the motor response at different drive levels and used verification testing with an accelerometer to confirm the final output. I am currently improving the motor driver circuitry to allow operation at several discrete frequencies and amplitudes rather than a single variable speed.</p>
         </div>
       </div>
 
